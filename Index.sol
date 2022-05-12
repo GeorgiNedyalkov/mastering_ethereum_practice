@@ -9,6 +9,8 @@ contract Index {
     bytes32 byteArray;
     bytes dynamicByteArray;
     uint256[] ids;
+    uint256 oneSecond = 1 seconds;
+    uint256 oneHour = 1 hours;
 
     struct Person {
         uint8 age;
