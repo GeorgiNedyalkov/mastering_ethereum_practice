@@ -31,3 +31,13 @@ contract TokenExistingInstance is Mortal {
 }
 
 // Method 3: Raw call, delegatecall
+// low-level functions that are the most flexible and riskiest way to call other contracts
+
+contract TokenCall is Mortal {
+    // this is a blind call into a function and it has security issues mainly Reentrancy attack
+    constructor(address _faucet) {
+        if (!_faucet.call("Withdraw", 0.1 ether)) {
+            revert("Withdrawal from faucet failed");
+        }
+    }
+}
