@@ -43,6 +43,5 @@ contract Index {
     address.delegatecall(_payload_); //Low-level DELEGATECALL function, like callcode() but with the full msg context of the current contract. 
     // WARNING: advanced use only!
 
-
-
+    selfdestruct(address recipient);
 }
