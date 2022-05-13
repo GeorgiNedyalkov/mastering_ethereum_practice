@@ -13,3 +13,8 @@
  - Empty the account 
  - Transfer the amount to the beneficiary
  - Return true
+
+
+ ## Gas considerations
+ - Avoid Dynamically Sized Arrays
+ - Avoid Calls to Other Contracts
