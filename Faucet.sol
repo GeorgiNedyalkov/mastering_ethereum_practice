@@ -10,17 +10,19 @@ contract Faucet {
     
     receive() external payable;
 
+    modifier onlyOnwer {
+        require(msg.sender == owner);
+        _;
+    }
+
     function withdraw(uint withdraw_amount) public {
         require(withdraw_amount < 0.1 ethers);
         msg.sender.transfer(withdraw_amount);
     }
 
-    function destroy() public {
+    function destroy() public onlyOwner {
         selfdestruct(owner);
     }
 
-    modifier onlyOnwer {
-        require(msg.sender == owner);
-        _;
-    }
+    
 }
