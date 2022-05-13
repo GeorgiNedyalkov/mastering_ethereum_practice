@@ -14,4 +14,13 @@ contract Faucet {
         require(withdraw_amount < 0.1 ethers);
         msg.sender.transfer(withdraw_amount);
     }
+
+    function destroy() public {
+        selfdestruct(owner);
+    }
+
+    modifier onlyOnwer {
+        require(msg.sender == owner);
+        _;
+    }
 }
