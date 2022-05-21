@@ -20,5 +20,3 @@ contract EnumTest {
     function getSmallesttValue() public pure returns (ActionChoices) {
         return type(ActionChoices).min;
     }
-
-    
