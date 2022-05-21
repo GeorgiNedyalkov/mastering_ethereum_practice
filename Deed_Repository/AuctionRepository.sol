@@ -124,4 +124,30 @@ contract AuctionRepository {
             auc.active,
             auc.finalized);
     }
+
+    function createAuction(
+        address _deedRepositoryAddress,
+        uint256 _deedId,
+        string memory _auctionTitle,
+        string memory _metaData,
+        uint256 _startPrice,
+        uint256 _blockDeadline) {
+            uint auctionId = auctions.length;
+            Auction memory newAuction;
+            newAuction.name = _auctionTitle;
+            newAuction.blockDeadline = _blockDeadline;
+            newAuction.startPrice = _startPrice;
+            newAuction.metadata = _metaData;
+            newAuction.deedId = _deedId;
+            newAuction.deedRepositoryAddress = _deedRepositoryAddress;
+            newAuction.owned = msg.sender;
+            newAuction.active = true;
+            newAuction.finalized = false;
+
+            auctions.push(newAuction);
+            auctionOwner[msg.sender].push(auctionId);
+
+            emit AuctionCreated(msg.sender, auctionId);
+            return true;
+        }
 }
